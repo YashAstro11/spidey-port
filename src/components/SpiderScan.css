@@ -1,0 +1,33 @@
+.spider-scan {
+    padding: 2rem;
+    background: var(--bg-color);
+    color: var(--text-color);
+    text-align: center;
+  }
+  
+  .spider-scan h2 {
+    color: var(--accent-color);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .spider-scan p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .qr-wrapper {
+    display: inline-block;
+    padding: 1rem;
+    border: 3px dashed var(--accent-color);
+    border-radius: 16px;
+    background: white;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 var(--accent-color); }
+    70% { transform: scale(1.05); box-shadow: 0 0 10px 10px transparent; }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 transparent; }
+  }
+  

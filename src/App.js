@@ -8,6 +8,8 @@ import SkillsRadar from './components/SkillsRadar';
 import ThemeToggle from './components/ThemeToggle';
 import SpiderFacts from './components/SpiderFacts';
 import AskSpidey from './components/AskSpidey';
+import SpiderTimeline from './components/SpiderTimeline';
+import SpiderScan from './components/SpiderScan';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
       <Navbar />
       <ThemeToggle />
       <Hero />
+      <SpiderScan />
+      <SpiderTimeline />
       <SkillsRadar />
       <SpiderFacts />
       <Projects />
