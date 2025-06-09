@@ -1,0 +1,23 @@
+.skills-container {
+  background: #0b5cab;
+  padding: 2rem;
+  border-radius: 20px;
+  margin: 2rem auto;
+  max-width: 600px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.skills-container.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skills-title {
+  text-align: center;
+  color: #e62429;
+  font-family: 'Bangers', cursive;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,15 @@
+.projects {
+    padding: 2rem;
+    background-color: #0b5cab;
+    text-align: center;
+  }
+  
+  .project-card {
+    background-color: white;
+    color: #0b5cab;
+    padding: 1rem;
+    margin: 1rem auto;
+    border-radius: 10px;
+    max-width: 400px;
+  }
+  
