@@ -7,6 +7,7 @@ import Contact from './components/Contact';
 import SkillsRadar from './components/SkillsRadar';
 import ThemeToggle from './components/ThemeToggle';
 import SpiderFacts from './components/SpiderFacts';
+import AskSpidey from './components/AskSpidey';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <SkillsRadar />
       <SpiderFacts />
       <Projects />
+      <AskSpidey />
       <Contact />
     </div>
   );

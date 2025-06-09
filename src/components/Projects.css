@@ -52,7 +52,16 @@
   border-radius: 8px;
   margin-bottom: 0.5rem;
 }
-
+/* .project-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+} */
+.project-card img:hover {
+  transform: scale(1.02);
+}
 .project-card:hover {
   transform: scale(1.05);
 }

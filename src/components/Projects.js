@@ -1,22 +1,24 @@
 import React from 'react';
 import './Projects.css';
-
+import simpleShoppyImg from '../assets/simple-shoppy.png';
+import womenSafetyImg from '../assets/women-safety.png';
+import spideyPortImg from '../assets/spidey-port.png';
 const projects = [
   {
     title: 'SimpleShoppy 🛍️',
-    image: 'https://via.placeholder.com/300x200?text=SimpleShoppy',
+    image: simpleShoppyImg,
     github: 'https://github.com/YashAstro11/SimpleShoppy',
     demo: 'https://simpleshoppy.vercel.app'
   },
   {
     title: 'Women Safety Analytics 🚨',
-    image: 'https://via.placeholder.com/300x200?text=Women+Safety',
+    image: womenSafetyImg,
     github: 'https://github.com/YashAstro11/women-safety-analytics',
     demo: 'https://women-safe.vercel.app'
   },
   {
     title: 'Spider Portfolio 🕷️',
-    image: 'https://via.placeholder.com/300x200?text=Spidey-Port',
+    image: spideyPortImg,
     github: 'https://github.com/YashAstro11/spidey-port',
     demo: 'http://localhost:3000'
   }

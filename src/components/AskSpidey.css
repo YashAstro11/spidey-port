@@ -1,0 +1,62 @@
+.spidey-chat {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .toggle-btn {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .chat-box {
+    background: var(--bg-color);
+    color: var(--text-color);
+    width: 280px;
+    max-height: 400px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    padding: 1rem;
+    margin-top: 0.5rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chat-log {
+    flex: 1;
+    overflow-y: auto;
+    max-height: 200px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .chat-entry {
+    margin-bottom: 0.7rem;
+  }
+  
+  .chat-box input {
+    padding: 0.5rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    background: var(--bg-color);
+    color: var(--text-color);
+  }
+  
+  .chat-box button {
+    padding: 0.4rem;
+    border: none;
+    border-radius: 6px;
+    background: var(--accent-color);
+    color: var(--bg-color);
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
