@@ -1,12 +1,19 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --accent-color: #e62429;
+}
+
+[data-theme='dark'] {
+  --bg-color: #0b0b0b;
+  --text-color: #ffffff;
+  --accent-color: #0b5cab;
+}
+
 body {
   margin: 0;
   font-family: 'Bangers', cursive;
-  background-color: #0b5cab;
-  color: white;
-}
-
-.hero {
-  background-color: #e62429;
-  text-align: center;
-  padding: 2rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease-in-out;
 }
