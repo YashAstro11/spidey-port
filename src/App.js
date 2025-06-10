@@ -14,17 +14,17 @@ import SpiderScan from './components/SpiderScan';
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <ThemeToggle />
-      <Hero />
-      <SpiderScan />
-      <SpiderTimeline />
-      <SkillsRadar />
-      <SpiderFacts />
-      <Projects />
-      <AskSpidey />
-      <Contact />
-    </div>
+    <Navbar />
+    <ThemeToggle />
+    <section id="hero"><Hero /></section>
+    <section id="timeline"><SpiderTimeline /></section>
+    <section id="skills"><SkillsRadar /></section>
+    <section id="projects"><Projects /></section>
+    <section id="contact"><Contact /></section>
+    <SpiderFacts />
+    <SpiderScan />
+    <AskSpidey />
+   </div>  
   );
 }
 
