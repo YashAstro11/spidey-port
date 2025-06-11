@@ -1,30 +1,43 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import './App.css';
-import Hero from './components/Hero';
-import Projects from './components/Projects';
+
 import Navbar from './components/Navbar';
-import Contact from './components/Contact';
-import SkillsRadar from './components/SkillsRadar';
 import ThemeToggle from './components/ThemeToggle';
-import SpiderFacts from './components/SpiderFacts';
 import AskSpidey from './components/AskSpidey';
-import SpiderTimeline from './components/SpiderTimeline';
-import SpiderScan from './components/SpiderScan';
+import BackToTop from './components/BackToTop';
+import SpideyBlog from './components/SpideyBlog';
+
+// Lazy-loaded components
+const Hero = lazy(() => import('./components/Hero'));
+const SpiderTimeline = lazy(() => import('./components/SpiderTimeline'));
+const SkillsRadar = lazy(() => import('./components/SkillsRadar'));
+const Projects = lazy(() => import('./components/Projects'));
+const SpiderFacts = lazy(() => import('./components/SpiderFacts'));
+const SpiderScan = lazy(() => import('./components/SpiderScan'));
+const Contact = lazy(() => import('./components/Contact'));
+
+
 
 function App() {
   return (
     <div className="App">
-    <Navbar />
-    <ThemeToggle />
-    <section id="hero"><Hero /></section>
-    <section id="timeline"><SpiderTimeline /></section>
-    <section id="skills"><SkillsRadar /></section>
-    <section id="projects"><Projects /></section>
-    <section id="contact"><Contact /></section>
-    <SpiderFacts />
-    <SpiderScan />
-    <AskSpidey />
-   </div>  
+      <Navbar />
+      <ThemeToggle />
+
+      <Suspense fallback={<div className="loader">🕸️ Loading...</div>}>
+        <section id="hero"><Hero /></section>
+        <section id="timeline"><SpiderTimeline /></section>
+        <section id="skills"><SkillsRadar /></section>
+        <section id="projects"><Projects /></section>
+        <section id="blog"><SpideyBlog /></section>
+        <SpiderFacts />
+        <SpiderScan />
+        <section id="contact"><Contact /></section>
+      </Suspense>
+
+      <AskSpidey />
+      <BackToTop />
+    </div>
   );
 }
 

@@ -1,0 +1,50 @@
+.spidey-blog {
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .spidey-blog h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--accent-color);
+  }
+  
+  .blog-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .blog-card {
+    background: white;
+    color: black;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 320px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    text-align: left;
+  }
+  
+  .blog-card h3 {
+    margin-bottom: 0.3rem;
+  }
+  
+  .blog-card span {
+    font-size: 0.85rem;
+    color: gray;
+  }
+  
+  .blog-card p {
+    margin: 0.5rem 0 1rem;
+  }
+  
+  .blog-card a {
+    text-decoration: none;
+    color: var(--accent-color);
+    font-weight: bold;
+  }
+  

@@ -3,7 +3,7 @@ import { QRCodeSVG } from 'qrcode.react';
 import './SpiderScan.css';
 
 const SpiderScan = () => {
-  const resumeUrl = "https://yashastro11.github.io/resume.pdf"; // Replace with your actual resume link
+  const resumeUrl = "https://drive.google.com/file/d/1Crlz184kQh93Cao80wWzU-zM8yhOu8sE/view?usp=drive_link"; // Replace with your actual resume link
 
   return (
     <div className="spider-scan">

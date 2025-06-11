@@ -1,0 +1,38 @@
+.back-to-top {
+    position: fixed;
+    bottom: 6.5rem;
+    right: 2rem;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 998;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .back-to-top.show {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+  
+  .back-to-top:hover {
+    opacity: 0.85;
+  }
+  
+  @media (max-width: 480px) {
+    .back-to-top {
+      bottom: 7rem;
+      right: 1rem;
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+    }
+  }
+    
