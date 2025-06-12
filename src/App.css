@@ -51,7 +51,9 @@ section {
   max-width: 250px;
   border-radius: 20px;
 }
-
+html{
+  scroll-behavior: smooth;
+}
 .hero h2 {
   font-size: 1.5rem;
   margin-top: 1rem;

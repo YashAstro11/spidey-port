@@ -47,4 +47,13 @@
     color: var(--accent-color);
     font-weight: bold;
   }
+  .read-more-btn {
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+  }
   

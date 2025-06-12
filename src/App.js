@@ -1,10 +1,12 @@
-import React, { Suspense, lazy } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import './App.css';
 
+// Always-loaded components
 import Navbar from './components/Navbar';
 import ThemeToggle from './components/ThemeToggle';
 import AskSpidey from './components/AskSpidey';
 import BackToTop from './components/BackToTop';
+import BlogEditor from './components/BlogEditor';
 import SpideyBlog from './components/SpideyBlog';
 
 // Lazy-loaded components
@@ -16,9 +18,13 @@ const SpiderFacts = lazy(() => import('./components/SpiderFacts'));
 const SpiderScan = lazy(() => import('./components/SpiderScan'));
 const Contact = lazy(() => import('./components/Contact'));
 
-
-
 function App() {
+  const [blogPosts, setBlogPosts] = useState([]);
+
+  const addBlogPost = (post) => {
+    setBlogPosts([post, ...blogPosts]);
+  };
+
   return (
     <div className="App">
       <Navbar />
@@ -29,14 +35,19 @@ function App() {
         <section id="timeline"><SpiderTimeline /></section>
         <section id="skills"><SkillsRadar /></section>
         <section id="projects"><Projects /></section>
-        <section id="blog"><SpideyBlog /></section>
         <SpiderFacts />
         <SpiderScan />
+
+        <section id="blog">
+          <BlogEditor onAddPost={addBlogPost} />
+          <SpideyBlog posts={blogPosts} />
+        </section>
+
         <section id="contact"><Contact /></section>
       </Suspense>
 
-      <AskSpidey />
       <BackToTop />
+      <AskSpidey />
     </div>
   );
 }
