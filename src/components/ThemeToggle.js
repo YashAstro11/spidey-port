@@ -4,14 +4,19 @@ import './ThemeToggle.css';
 const ThemeToggle = () => {
   const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
 
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+
+    const audio = new Audio('/sounds/thwip.mp3'); // Load from public folder
+    audio.volume = 0.5; // optional: adjust volume
+    audio.play().catch((e) => console.log("Sound play blocked:", e));
+  };
+
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
   }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
 
   return (
     <button className="theme-toggle" onClick={toggleTheme}>

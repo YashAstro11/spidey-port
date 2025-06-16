@@ -24,7 +24,17 @@ function App() {
   const addBlogPost = (post) => {
     setBlogPosts([post, ...blogPosts]);
   };
-
+  const deleteBlogPost = (index) => {
+    const updated = [...blogPosts];
+    updated.splice(index, 1);
+    setBlogPosts(updated);
+  };
+  
+  const updateBlogPost = (index, updatedPost) => {
+    const updated = [...blogPosts];
+    updated[index] = updatedPost;
+    setBlogPosts(updated);
+  };
   return (
     <div className="App">
       <Navbar />
@@ -40,7 +50,11 @@ function App() {
 
         <section id="blog">
           <BlogEditor onAddPost={addBlogPost} />
-          <SpideyBlog posts={blogPosts} />
+          <SpideyBlog
+          posts={blogPosts}
+          onDelete={deleteBlogPost}
+          onUpdate={updateBlogPost}
+          />
         </section>
 
         <section id="contact"><Contact /></section>
