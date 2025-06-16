@@ -4,7 +4,7 @@ A Spider-Man themed personal developer portfolio built with **React.js** and **T
 
 ## 🌐 Live Demo
 
-🚀 [View Live]((https://spideyport.netlify.app/))  
+🚀 [View Live](spideyport.netlify.app)  
 📸 Preview Screenshot:  
 *(Add an image or GIF of your portfolio here)*
 
