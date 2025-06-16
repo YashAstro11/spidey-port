@@ -1,4 +1,5 @@
 import React, { useState, Suspense, lazy } from 'react';
+import { useEffect } from 'react';
 import './App.css';
 
 // Always-loaded components
@@ -18,8 +19,18 @@ const SpiderFacts = lazy(() => import('./components/SpiderFacts'));
 const SpiderScan = lazy(() => import('./components/SpiderScan'));
 const Contact = lazy(() => import('./components/Contact'));
 
+
+
 function App() {
   const [blogPosts, setBlogPosts] = useState([]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      document.body.classList.toggle('scrolled', window.scrollY > 30);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const addBlogPost = (post) => {
     setBlogPosts([post, ...blogPosts]);
@@ -35,6 +46,7 @@ function App() {
     updated[index] = updatedPost;
     setBlogPosts(updated);
   };
+  
   return (
     <div className="App">
       <Navbar />

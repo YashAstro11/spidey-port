@@ -1,0 +1,30 @@
+/* Navbar animation */
+.navbar {
+    animation: slideDown 0.6s ease-out forwards;
+    transform: translateY(-100%);
+    opacity: 0;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.4s ease, box-shadow 0.3s ease;
+  }
+  
+  @keyframes slideDown {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Optional: Scroll shadow effect */
+  body.scrolled .navbar {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+  

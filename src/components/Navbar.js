@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Navbar.css';
+import './NavbarAnimation.css';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
