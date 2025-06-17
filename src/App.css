@@ -1,13 +1,25 @@
+/* App.css */
 :root {
   --bg-color: #ffffff;
   --text-color: #000000;
-  --accent-color: #e62429;
+  --accent-color: #0b5cab; /* blue for Red Suit contrast */
 }
 
 [data-theme='dark'] {
-  --bg-color: #0b0b0b;
+  --bg-color: #0b5cab;
   --text-color: #ffffff;
+  --accent-color: #e62429;
+}
+
+[data-theme='light'] {
+  --bg-color: #ffffff;
+  --text-color: #000000;
   --accent-color: #0b5cab;
+}
+
+[data-aos] {
+  transition-property: transform, opacity;
+  will-change: transform, opacity;
 }
 
 html, body {
@@ -33,11 +45,103 @@ img {
 
 section {
   padding: 2rem 1rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
-/* Input and Button Accessibility */
-input, textarea, button {
+
+.theme-toggle {
+  background: var(--accent-color);
+  color: var(--bg-color);
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
   font-size: 1rem;
-  padding: 0.8rem;
-  min-width: 44px;
-  min-height: 44px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin: 1rem;
+}
+
+.theme-toggle:hover {
+  opacity: 0.8;
+}
+
+button,
+input,
+textarea {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 2px solid var(--accent-color);
+}
+
+button:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--text-color);
+}
+
+.navbar,
+.hero,
+.projects,
+.contact,
+.timeline,
+.blog,
+.footer {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.navbar h1,
+.projects h2,
+.timeline h2,
+.blog h2,
+.contact h2 {
+  color: var(--accent-color);
+}
+
+.card,
+.project-card,
+.blog-card {
+  background: var(--text-color);
+  color: var(--bg-color);
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Navbar animation */
+.navbar {
+  animation: slideDown 0.6s ease-out forwards;
+  transform: translateY(-100%);
+  opacity: 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.4s ease, box-shadow 0.3s ease;
+}
+
+@keyframes slideDown {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Optional: Scroll shadow effect */
+body.scrolled .navbar {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }

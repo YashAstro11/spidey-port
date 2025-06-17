@@ -1,5 +1,7 @@
 import React, { useState, Suspense, lazy } from 'react';
 import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import './App.css';
 
 // Always-loaded components
@@ -31,7 +33,14 @@ function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100,
+    });
+  }, []);
+  
   const addBlogPost = (post) => {
     setBlogPosts([post, ...blogPosts]);
   };
@@ -53,14 +62,14 @@ function App() {
       <ThemeToggle />
 
       <Suspense fallback={<div className="loader">🕸️ Loading...</div>}>
-        <section id="hero"><Hero /></section>
-        <section id="timeline"><SpiderTimeline /></section>
-        <section id="skills"><SkillsRadar /></section>
-        <section id="projects"><Projects /></section>
+        <section id="hero" data-aos="fade-up"><Hero /></section>
+        <section id="timeline" data-aos="fade-right"><SpiderTimeline /></section>
+        <section id="skills" data-aos="fade-left"><SkillsRadar /></section>
+        <section id="projects" data-aos="zoom-in"><Projects /></section>
         <SpiderFacts />
         <SpiderScan />
 
-        <section id="blog">
+        <section id="blog" data-aos="fade-up">
           <BlogEditor onAddPost={addBlogPost} />
           <SpideyBlog
           posts={blogPosts}
@@ -69,7 +78,7 @@ function App() {
           />
         </section>
 
-        <section id="contact"><Contact /></section>
+        <section id="contact" data-aos="fade-up"><Contact /></section>
       </Suspense>
 
       <BackToTop />
