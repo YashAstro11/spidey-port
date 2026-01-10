@@ -6,7 +6,6 @@ import './App.css';
 
 // Always-loaded components
 import Navbar from './components/Navbar';
-import ThemeToggle from './components/ThemeToggle';
 import AskSpidey from './components/AskSpidey';
 import BackToTop from './components/BackToTop';
 import BlogEditor from './components/BlogEditor';
@@ -60,7 +59,6 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <ThemeToggle />
 
       <Suspense fallback={<div className="loader">🕸️ Loading...</div>}>
         <section id="hero" data-aos="fade-up"><Hero /></section>

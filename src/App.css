@@ -1,15 +1,5 @@
 /* App.css */
 :root {
-  --bg-color: #ffffff;
-  --text-color: #1a1a1a;
-  --accent-color: #0b5cab;
-  /* blue */
-  --card-bg: #f5f5f5;
-  --card-border: #e0e0e0;
-  --glass-bg: rgba(255, 255, 255, 0.8);
-}
-
-[data-theme='dark'] {
   --bg-color: #121212;
   --text-color: #e0e0e0;
   --accent-color: #e62429;
@@ -19,14 +9,7 @@
   --glass-bg: rgba(30, 30, 30, 0.8);
 }
 
-[data-theme='light'] {
-  --bg-color: #ffffff;
-  --text-color: #1a1a1a;
-  --accent-color: #0b5cab;
-  --card-bg: #f5f5f5;
-  --card-border: #e0e0e0;
-  --glass-bg: rgba(255, 255, 255, 0.8);
-}
+/* Removed individual theme selectors to enforce Red Suit permanently */
 
 [data-aos] {
   transition-property: transform, opacity;
