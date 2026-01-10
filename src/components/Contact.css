@@ -1,9 +1,8 @@
 .contact {
-  padding: 2rem;
+  padding: 4rem 2rem;
   background: var(--bg-color);
   color: var(--accent-color);
   text-align: center;
-  font-family: 'Arial', sans-serif;
 }
 
 .contact h2 {
@@ -25,7 +24,8 @@ label {
   /* align-self: flex-start; */
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   max-width: 400px;
   padding: 0.7rem;

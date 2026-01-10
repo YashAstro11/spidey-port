@@ -1,0 +1,66 @@
+.certifications-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: left;
+}
+
+.cert-section h2,
+.leadership-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cert-section h2 {
+    color: var(--accent-color);
+}
+
+.leadership-section h2 {
+    color: var(--text-color);
+}
+
+/* Specific colors based on theme if needed, but variables handle most */
+[data-theme='dark'] .leadership-section h2 {
+    color: #fff;
+}
+
+.cert-list {
+    list-style: none;
+    padding: 0;
+}
+
+.cert-item {
+    background: var(--card-bg);
+    margin: 1rem 0;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.cert-item:hover {
+    transform: translateX(5px);
+}
+
+.cert-item.leadership {
+    border-left-color: #28a745;
+    /* Green for leadership distinctness? Or stick to theme */
+}
+
+/* Use secondary accent for variety */
+.cert-item:nth-child(even) {
+    border-left-color: #ff9800;
+    /* Orange */
+}
+
+.cert-desc {
+    font-size: 0.9em;
+    color: var(--text-color);
+    opacity: 0.8;
+    display: block;
+    margin-top: 0.3rem;
+}

@@ -9,7 +9,7 @@ const Contact = () => {
   });
 
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value});
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
@@ -21,6 +21,11 @@ const Contact = () => {
   return (
     <section className="contact">
       <h2>🕷️ Contact Your Friendly Neighborhood Dev</h2>
+      <div className="contact-info">
+        <p><strong>📧 Email:</strong> <a href="mailto:ya45242@gmail.com">ya45242@gmail.com</a></p>
+        <p><strong>📞 Phone:</strong> +91 9140506590</p>
+        <p><strong>📍 Location:</strong> Lucknow, India</p>
+      </div>
       <form onSubmit={handleSubmit}>
         <label>🧍 Name</label>
         <input type="text" name="name" value={formData.name} onChange={handleChange} required />

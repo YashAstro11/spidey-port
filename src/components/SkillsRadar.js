@@ -11,17 +11,17 @@ const SkillsRadar = () => {
 
   const data = {
     labels: [
-      'React ⚛️',
-      'C++ 👾',
-      'Web Dev 🕸️',
-      'Problem Solving 🧠',
-      'Creativity 🎨',
-      'Teamwork 🤝',
+      'React Native 📱',
+      'Expo 🚀',
+      'Redux 🔄',
+      'Firebase 🔥',
+      'TypeScript 📘',
+      'C++ 💻',
     ],
     datasets: [
       {
         label: 'Spidey Skill Levels',
-        data: [8, 7, 9, 8, 9, 7],
+        data: [9, 9, 8, 8, 8, 7],
         backgroundColor: 'rgba(230, 36, 41, 0.3)',
         borderColor: '#e62429',
         pointBackgroundColor: '#0b5cab',
@@ -39,12 +39,12 @@ const SkillsRadar = () => {
         callbacks: {
           label: (tooltipItem) => {
             const skills = [
-              'React – Building components like a boss',
-              'C++ – Strong with memory and logic',
-              'Web Dev – Expert in HTML, CSS, JS',
-              'Problem Solving – Thinks like Peter, solves like Tony',
-              'Creativity – UI/UX superhero',
-              'Teamwork – Works great in squads',
+              'React Native – Building cross-platform apps',
+              'Expo – Fast iteration and deployment',
+              'Redux – Complex state management made easy',
+              'Firebase – Auth, Firestore, and Realtime Database',
+              'TypeScript – Type-safe and scalable code',
+              'C++ – Solid foundation in DSA and logic',
             ];
             return skills[tooltipItem.dataIndex];
           },

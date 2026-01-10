@@ -19,6 +19,7 @@ const SkillsRadar = lazy(() => import('./components/SkillsRadar'));
 const Projects = lazy(() => import('./components/Projects'));
 const SpiderFacts = lazy(() => import('./components/SpiderFacts'));
 const SpiderScan = lazy(() => import('./components/SpiderScan'));
+const Certifications = lazy(() => import('./components/Certifications'));
 const Contact = lazy(() => import('./components/Contact'));
 
 
@@ -40,7 +41,7 @@ function App() {
       offset: 100,
     });
   }, []);
-  
+
   const addBlogPost = (post) => {
     setBlogPosts([post, ...blogPosts]);
   };
@@ -49,13 +50,13 @@ function App() {
     updated.splice(index, 1);
     setBlogPosts(updated);
   };
-  
+
   const updateBlogPost = (index, updatedPost) => {
     const updated = [...blogPosts];
     updated[index] = updatedPost;
     setBlogPosts(updated);
   };
-  
+
   return (
     <div className="App">
       <Navbar />
@@ -66,15 +67,16 @@ function App() {
         <section id="timeline" data-aos="fade-right"><SpiderTimeline /></section>
         <section id="skills" data-aos="fade-left"><SkillsRadar /></section>
         <section id="projects" data-aos="zoom-in"><Projects /></section>
+        <Certifications />
         <SpiderFacts />
         <SpiderScan />
 
         <section id="blog" data-aos="fade-up">
           <BlogEditor onAddPost={addBlogPost} />
           <SpideyBlog
-          posts={blogPosts}
-          onDelete={deleteBlogPost}
-          onUpdate={updateBlogPost}
+            posts={blogPosts}
+            onDelete={deleteBlogPost}
+            onUpdate={updateBlogPost}
           />
         </section>
 

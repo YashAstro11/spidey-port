@@ -3,24 +3,19 @@ import './SpiderTimeline.css';
 
 const timeline = [
   {
-    title: '🕸️ Bitten by the Coding Bug',
-    date: '2021',
-    description: 'Started exploring C++ and building console-based apps.',
+    title: '🎓 B.Tech in Computer Science',
+    date: '2022 – 2026',
+    description: 'Shri Ramswaroop Memorial University, Lucknow (CGPA: 8.23)',
   },
   {
-    title: '⚛️ Entered the React-Verse',
-    date: '2022',
-    description: 'Learned React and built multiple frontend projects.',
+    title: '💼 React Native Developer Intern',
+    date: 'Jun 2025 – Present',
+    description: 'SlotinSolutions (Remote) — Building live React Native apps with Expo, Firebase, and Redux.',
   },
   {
-    title: '🚨 Women Safety Analytics',
-    date: '2024',
-    description: 'Developed a real-time safety analysis project with maps and data viz.',
-  },
-  {
-    title: '🕷️ Launched Spidey-Port',
-    date: '2025',
-    description: 'Built a superhero-themed personal portfolio.',
+    title: '🚀 Jinete Ride Sharing App',
+    date: 'Present',
+    description: 'Developed a ride-sharing app with authentication & real-time updates. (Closed Testing)',
   },
 ];
 
