@@ -57,6 +57,15 @@ const Projects = () => {
               <div
                 key={project.id}
                 className={`spidey-card project-card-item ${isPriority ? 'priority-featured' : ''} tilt-${idx % 3}`}
+                onClick={() => setSelectedProject(project)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedProject(project);
+                  }
+                }}
               >
                 {/* Visual Banner / Thumbnail */}
                 <div className="project-media-wrap">
@@ -118,10 +127,13 @@ const Projects = () => {
                   <button
                     type="button"
                     className="btn btn-secondary btn-sm details-btn"
-                    onClick={() => setSelectedProject(project)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedProject(project);
+                    }}
                   >
                     <Eye size={15} />
-                    <span>Details</span>
+                    <span>View Details</span>
                   </button>
 
                   <div className="project-external-links">
@@ -133,12 +145,13 @@ const Projects = () => {
                         className="icon-link-btn"
                         title="GitHub Repository"
                         aria-label="GitHub Repository"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <GithubIcon size={17} />
                       </a>
                     )}
 
-                    {project.liveUrl && (
+                    {project.liveUrl && project.liveUrl !== '#' && (
                       <a
                         href={project.liveUrl}
                         target="_blank"
@@ -146,6 +159,7 @@ const Projects = () => {
                         className="icon-link-btn live-accent"
                         title={project.isLive ? "Visit Live Site" : "Live Demo"}
                         aria-label="Live Site"
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <ExternalLink size={17} />
                       </a>

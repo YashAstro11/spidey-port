@@ -264,7 +264,7 @@ export const projects = [
     status: "Active Project",
     image: "/assets/spidey-port.png",
     fallbackColor: "#e62429",
-    liveUrl: "#",
+    liveUrl: null,
     githubUrl: "https://github.com/YashAstro11/spidey-port",
     techStack: ["React.js", "CSS3 Variables", "AOS Animations", "Lucide React", "QR Code"],
     overview: "A uniquely themed personal portfolio blending Marvel / Spider-Man superhero aesthetics with modern frontend engineering principles.",
@@ -275,6 +275,7 @@ export const projects = [
       "Interactive Ask Spidey rule-based portfolio assistant",
       "Spider Scan QR code for rapid mobile resume access",
       "Responsive layout optimized across desktop, tablet, and mobile",
+      "Interactive Project Detail Modals showcasing full problem-solution engineering narratives",
     ],
   },
   {
@@ -294,9 +295,10 @@ export const projects = [
     problem: "Enhancing safety in isolated urban environments requires predictive threat awareness and rapid automated alerts.",
     solution: "Implemented computer vision pipelines using MediaPipe pose detection coupled with spatial risk data visualization.",
     keyFeatures: [
-      "Real-time posture and motion tracking via MediaPipe",
-      "Spatial risk heat mapping using GIS coordinates",
-      "Automated alert dispatch simulation",
+      "Real-time posture and anomalous motion tracking via MediaPipe computer vision",
+      "Spatial risk heat mapping using GIS coordinates and threat zone categorization",
+      "Automated distress alert simulation triggering location-aware emergency responses",
+      "Data visualization dashboard for analyzing historical safety trends and incident clusters",
     ],
   },
   {
@@ -316,9 +318,10 @@ export const projects = [
     problem: "Independent bookstores need unified online distribution without prohibitive platform overhead.",
     solution: "Engineered a clean multi-seller marketplace with catalog browsing, shopping cart workflows, and seller inventory management.",
     keyFeatures: [
-      "Multi-seller product catalog and category filters",
-      "Dynamic shopping cart and order summary calculation",
-      "Seller dashboard for managing listings and pricing",
+      "Multi-seller storefront architecture with independent merchant inventory administration",
+      "Dynamic shopping cart with real-time tax, discount, and order total calculation",
+      "Seller portal for managing inventory stocks, listings, and pricing updates",
+      "Multi-category catalog search with instant filtering by author, genre, and price tier",
     ],
   },
 ];

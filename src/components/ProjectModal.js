@@ -1,78 +1,133 @@
 import React, { useEffect } from 'react';
-import { X, ExternalLink, CheckCircle2, AlertCircle, Sparkles, Layers } from 'lucide-react';
+import { createPortal } from 'react-dom';
+import { 
+  X, 
+  ExternalLink, 
+  CheckCircle2, 
+  AlertCircle, 
+  Sparkles, 
+  Layers, 
+  Code2, 
+  Globe, 
+  Smartphone,
+  Cpu,
+  ShoppingBag
+} from 'lucide-react';
 import { GithubIcon } from './SocialIcons';
 import './ProjectModal.css';
+
+const getCategoryIcon = (category = '') => {
+  const cat = category.toLowerCase();
+  if (cat.includes('mobile') || cat.includes('react native')) return <Smartphone size={32} />;
+  if (cat.includes('web') || cat.includes('next')) return <Globe size={32} />;
+  if (cat.includes('vision') || cat.includes('ml')) return <Cpu size={32} />;
+  if (cat.includes('commerce')) return <ShoppingBag size={32} />;
+  return <Code2 size={32} />;
+};
 
 const ProjectModal = ({ project, onClose }) => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose();
     };
+
+    // Save previous overflow style and lock body
+    const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = originalOverflow;
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose]);
 
-  if (!project) return null;
+  if (!project || typeof document === 'undefined') return null;
 
-  return (
-    <div className="modal-backdrop" onClick={onClose} role="dialog" aria-modal="true">
-      <div className="modal-container" onClick={(e) => e.stopPropagation()}>
-        {/* Modal Header */}
-        <div className="modal-header">
-          <div className="modal-title-group">
-            <div className="modal-badges">
+  const modalContent = (
+    <div className="spidey-modal-backdrop" onClick={onClose} role="dialog" aria-modal="true">
+      <div className="spidey-modal-container" onClick={(e) => e.stopPropagation()}>
+        {/* Header */}
+        <div className="spidey-modal-header">
+          <div className="modal-title-area">
+            <div className="modal-badge-row">
               <span className={`tag ${project.isLive ? 'tag-green' : 'tag-red'}`}>
-                {project.badge}
+                {project.badge || 'Featured Project'}
               </span>
               <span className="tag tag-blue">{project.category}</span>
+              <span className="tag">{project.status}</span>
             </div>
-            <h3 className="modal-title">{project.title}</h3>
+            <h2 className="modal-main-title">{project.title}</h2>
           </div>
 
           <button
             type="button"
-            className="modal-close-btn"
+            className="spidey-modal-close"
             onClick={onClose}
-            aria-label="Close modal"
+            aria-label="Close modal window"
+            title="Close (Esc)"
           >
-            <X size={20} />
+            <X size={22} />
           </button>
         </div>
 
-        {/* Modal Scrollable Body */}
-        <div className="modal-body">
-          {/* Overview Section */}
-          <div className="modal-section">
-            <h4 className="modal-section-title">
-              <Sparkles size={16} className="modal-icon-red" />
+        {/* Media / Visual Preview Banner */}
+        <div className="modal-visual-banner">
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={project.title}
+              className="modal-banner-img"
+            />
+          ) : (
+            <div
+              className="modal-banner-fallback"
+              style={{
+                background: `linear-gradient(135deg, #1c1c1c 0%, ${project.fallbackColor || '#262626'} 160%)`,
+              }}
+            >
+              <div className="modal-fallback-icon">
+                {getCategoryIcon(project.category)}
+              </div>
+              <div className="modal-fallback-text">
+                <span className="modal-fallback-title">{project.title}</span>
+                <span className="modal-fallback-cat">{project.category}</span>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Scrollable Body Content */}
+        <div className="spidey-modal-body">
+          {/* Section: Project Overview */}
+          <div className="modal-detail-block">
+            <h3 className="modal-block-heading">
+              <Sparkles size={17} className="modal-heading-icon" />
               <span>Project Overview</span>
-            </h4>
-            <p className="modal-text">{project.overview || project.shortDescription}</p>
+            </h3>
+            <p className="modal-lead-paragraph">
+              {project.overview || project.shortDescription}
+            </p>
           </div>
 
-          {/* Problem & Solution (Engineering Impact) */}
+          {/* Section: Problem & Solution Grid */}
           {(project.problem || project.solution) && (
-            <div className="problem-solution-grid">
+            <div className="modal-impact-grid">
               {project.problem && (
-                <div className="p-s-box problem-box">
-                  <div className="p-s-header">
-                    <AlertCircle size={16} className="text-red" />
-                    <h5>The Challenge</h5>
+                <div className="impact-box problem-theme">
+                  <div className="impact-box-head">
+                    <AlertCircle size={17} className="impact-icon-red" />
+                    <h4>The Challenge / Problem</h4>
                   </div>
                   <p>{project.problem}</p>
                 </div>
               )}
 
               {project.solution && (
-                <div className="p-s-box solution-box">
-                  <div className="p-s-header">
-                    <CheckCircle2 size={16} className="text-green" />
-                    <h5>The Engineering Solution</h5>
+                <div className="impact-box solution-theme">
+                  <div className="impact-box-head">
+                    <CheckCircle2 size={17} className="impact-icon-green" />
+                    <h4>The Engineering Solution</h4>
                   </div>
                   <p>{project.solution}</p>
                 </div>
@@ -80,44 +135,50 @@ const ProjectModal = ({ project, onClose }) => {
             </div>
           )}
 
-          {/* Key Features */}
+          {/* Section: Key Features */}
           {project.keyFeatures && project.keyFeatures.length > 0 && (
-            <div className="modal-section">
-              <h4 className="modal-section-title">
-                <Layers size={16} className="modal-icon-red" />
-                <span>Key Implemented Features</span>
-              </h4>
-              <ul className="modal-features-list">
-                {project.keyFeatures.map((feat, idx) => (
-                  <li key={idx} className="modal-feature-row">
-                    <CheckCircle2 size={15} className="feature-check-icon" />
-                    <span>{feat}</span>
+            <div className="modal-detail-block">
+              <h3 className="modal-block-heading">
+                <Layers size={17} className="modal-heading-icon" />
+                <span>Key Features & Capabilities</span>
+              </h3>
+              <ul className="modal-features-grid">
+                {project.keyFeatures.map((feature, idx) => (
+                  <li key={idx} className="feature-list-card">
+                    <CheckCircle2 size={16} className="feature-check" />
+                    <span>{feature}</span>
                   </li>
                 ))}
               </ul>
             </div>
           )}
 
-          {/* Tech Stack */}
-          <div className="modal-section">
-            <h4 className="modal-section-title">Technologies & Architecture</h4>
-            <div className="modal-tech-chips">
-              {project.techStack.map((tech, idx) => (
-                <span key={idx} className="tag tag-red">
-                  {tech}
-                </span>
-              ))}
+          {/* Section: Technologies & Architecture */}
+          {project.techStack && project.techStack.length > 0 && (
+            <div className="modal-detail-block">
+              <h3 className="modal-block-heading">
+                <Code2 size={17} className="modal-heading-icon" />
+                <span>Architecture & Technologies</span>
+              </h3>
+              <div className="modal-tech-cloud">
+                {project.techStack.map((tech, idx) => (
+                  <span key={idx} className="tech-chip-item">
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
-        {/* Modal Footer Actions */}
-        <div className="modal-footer">
-          <div className="modal-status-text">
-            <span>Status: <strong>{project.status}</strong></span>
+        {/* Footer Actions */}
+        <div className="spidey-modal-footer">
+          <div className="modal-footer-status">
+            <span>Project Status:</span>
+            <strong>{project.status}</strong>
           </div>
 
-          <div className="modal-actions-group">
+          <div className="modal-footer-btns">
             {project.githubUrl ? (
               <a
                 href={project.githubUrl}
@@ -126,15 +187,15 @@ const ProjectModal = ({ project, onClose }) => {
                 className="btn btn-secondary btn-sm"
               >
                 <GithubIcon size={16} />
-                <span>View Repository</span>
+                <span>View GitHub Repo</span>
               </a>
             ) : (
-              <span className="btn btn-secondary btn-sm disabled-link" title="Proprietary / Private Codebase">
-                Private Codebase
+              <span className="btn btn-secondary btn-sm disabled-action" title="Proprietary Internship Codebase">
+                Internal / Private Codebase
               </span>
             )}
 
-            {project.liveUrl && (
+            {project.liveUrl && project.liveUrl !== '#' && (
               <a
                 href={project.liveUrl}
                 target="_blank"
@@ -142,14 +203,24 @@ const ProjectModal = ({ project, onClose }) => {
                 className="btn btn-primary btn-sm"
               >
                 <ExternalLink size={16} />
-                <span>{project.isLive ? 'Visit Live Website' : 'Live Platform'}</span>
+                <span>{project.isLive ? 'Visit Live Website' : 'Open Live Platform'}</span>
               </a>
             )}
+
+            <button
+              type="button"
+              className="btn btn-outline-red btn-sm"
+              onClick={onClose}
+            >
+              <span>Close Window</span>
+            </button>
           </div>
         </div>
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 };
 
 export default ProjectModal;
