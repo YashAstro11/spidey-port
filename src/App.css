@@ -1,163 +1,394 @@
-/* App.css */
+/* ===================================================================
+   SPIDEY-PORT CINEMATIC DESIGN SYSTEM
+   Professional Developer Portfolio with Spider-Man Aesthetic
+   =================================================================== */
+
 :root {
-  --bg-color: #121212;
-  --text-color: #e0e0e0;
-  --accent-color: #e62429;
-  /* red */
+  /* Color Palette */
+  --bg-primary: #121212;
+  --bg-secondary: #181818;
   --card-bg: #1e1e1e;
-  --card-border: #333333;
-  --glass-bg: rgba(30, 30, 30, 0.8);
+  --card-elevated: #252525;
+  --card-border: rgba(230, 36, 41, 0.20);
+  --card-border-hover: rgba(230, 36, 41, 0.55);
+
+  --accent-red: #e62429;
+  --accent-blue: #0b5cab;
+  --accent-gold: #f59e0b;
+  --accent-green: #10b981;
+
+  --red-glow: rgba(230, 36, 41, 0.35);
+  --red-glow-subtle: rgba(230, 36, 41, 0.15);
+  --blue-glow: rgba(11, 92, 171, 0.30);
+
+  --text-primary: #f5f5f5;
+  --text-secondary: #b3b3b3;
+  --text-muted: #777777;
+
+  /* Typography */
+  --font-comic: 'Bangers', cursive;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Space Grotesk', 'Inter', sans-serif;
+
+  /* Spacing & Layout */
+  --container-max: 1200px;
+  --section-padding: 5.5rem 1.5rem;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Removed individual theme selectors to enforce Red Suit permanently */
+/* ===================================================================
+   RESET & GLOBAL BASE
+   =================================================================== */
 
-[data-aos] {
-  transition-property: transform, opacity;
-  will-change: transform, opacity;
-}
-
-html,
-body {
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: all 0.3s ease-in-out;
-  max-width: 100vw;
-  overflow-x: hidden;
-  font-size: 16px;
-  line-height: 1.6;
+}
+
+html {
   scroll-behavior: smooth;
+  font-size: 16px;
+  color-scheme: dark;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Bangers', cursive;
-  letter-spacing: 1px;
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
 }
 
-* {
-  box-sizing: border-box;
+/* Ambient spider web background pattern overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(230, 36, 41, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 100% 50%, rgba(11, 92, 171, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(230, 36, 41, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+#root, .App {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-section {
-  padding: 2rem 1rem;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+/* ===================================================================
+   TYPOGRAPHY
+   =================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
 }
 
-.theme-toggle {
-  background: var(--accent-color);
-  color: var(--bg-color);
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 30px;
-  font-weight: bold;
+.comic-title {
+  font-family: var(--font-comic);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+p {
+  color: var(--text-secondary);
   font-size: 1rem;
-  cursor: pointer;
-  transition: background 0.3s;
-  margin: 1rem;
-}
-
-.theme-toggle:hover {
-  opacity: 0.8;
-}
-
-button,
-input,
-textarea {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  border: 2px solid var(--accent-color);
-}
-
-button:hover {
-  background-color: var(--accent-color);
-  color: var(--bg-color);
 }
 
 a {
-  color: var(--accent-color);
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+/* ===================================================================
+   CONTAINER & SECTION STYLES
+   =================================================================== */
+
+.section-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  width: 100%;
+}
+
+section {
+  padding: var(--section-padding);
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-red);
+  background: rgba(230, 36, 41, 0.1);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-full);
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  color: var(--text-primary);
+  position: relative;
+}
+
+.section-subtitle {
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: var(--text-secondary);
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+/* Decorative subtle divider */
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* ===================================================================
+   BUTTONS
+   =================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  border: none;
+  outline: none;
   text-decoration: none;
 }
 
-a:hover {
-  color: var(--text-color);
+.btn-primary {
+  background-color: var(--accent-red);
+  color: #ffffff;
+  box-shadow: 0 4px 14px var(--red-glow-subtle);
+  border: 1px solid transparent;
 }
 
-.navbar,
-.hero,
-.projects,
-.contact,
-.timeline,
-.blog,
-.footer {
-  background-color: var(--bg-color);
-  color: var(--text-color);
+.btn-primary:hover {
+  background-color: #ff3338;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--red-glow);
+  color: #ffffff;
 }
 
-.navbar h1,
-.projects h2,
-.timeline h2,
-.blog h2,
-.contact h2 {
-  color: var(--accent-color);
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
 }
 
-.card,
-.project-card,
-.blog-card {
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: var(--accent-red);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-outline-red {
+  background-color: transparent;
+  color: var(--accent-red);
+  border: 1px solid var(--accent-red);
+}
+
+.btn-outline-red:hover {
+  background-color: var(--accent-red);
+  color: #ffffff;
+  box-shadow: 0 4px 18px var(--red-glow);
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+/* ===================================================================
+   CARDS & PANELS
+   =================================================================== */
+
+.spidey-card {
   background: var(--card-bg);
-  color: var(--text-color);
   border: 1px solid var(--card-border);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
 }
 
-.glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--card-border);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-}
-
-/* Navbar animation */
-.navbar {
-  animation: slideDown 0.6s ease-out forwards;
-  transform: translateY(-100%);
-  opacity: 0;
-  position: sticky;
+.spidey-card::before {
+  content: "";
+  position: absolute;
   top: 0;
-  z-index: 999;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  align-items: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.4s ease, box-shadow 0.3s ease;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(9deg, transparent, var(--accent-red), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
 }
 
-@keyframes slideDown {
-  to {
-    transform: translateY(0);
-    opacity: 1;
+.spidey-card:hover {
+  border-color: var(--card-border-hover);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--red-glow-subtle);
+  transform: translateY(-4px);
+}
+
+.spidey-card:hover::before {
+  opacity: 1;
+}
+
+/* ===================================================================
+   TAGS & BADGES
+   =================================================================== */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.tag-red {
+  background: rgba(230, 36, 41, 0.12);
+  border-color: rgba(230, 36, 41, 0.3);
+  color: #ff6b6e;
+}
+
+.tag-blue {
+  background: rgba(11, 92, 171, 0.15);
+  border-color: rgba(11, 92, 171, 0.35);
+  color: #60a5fa;
+}
+
+.tag-green {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: #34d399;
+}
+
+/* ===================================================================
+   ANIMATION & PERFORMANCE UTILITIES
+   =================================================================== */
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(230, 36, 41, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(230, 36, 41, 0.65);
   }
 }
 
-/* Optional: Scroll shadow effect */
-body.scrolled .navbar {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+@keyframes floatSoft {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: floatSoft 4s ease-in-out infinite;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Loading skeleton */
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  gap: 0.75rem;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #121212;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 4px;
+  border: 2px solid #121212;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-red);
+}
+
+/* Responsive helpers */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 4rem 1.25rem;
+  }
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
 }

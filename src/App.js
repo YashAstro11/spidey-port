@@ -1,86 +1,86 @@
-import React, { useState, Suspense, lazy } from 'react';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './App.css';
 
-// Always-loaded components
+// Core components
 import Navbar from './components/Navbar';
-import AskSpidey from './components/AskSpidey';
+import Hero from './components/Hero';
+import About from './components/About';
+import Experience from './components/Experience';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Achievements from './components/Achievements';
+import Resume from './components/Resume';
+import SpiderFacts from './components/SpiderFacts';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
-import BlogEditor from './components/BlogEditor';
-import SpideyBlog from './components/SpideyBlog';
-
-// Lazy-loaded components
-const Hero = lazy(() => import('./components/Hero'));
-const SpiderTimeline = lazy(() => import('./components/SpiderTimeline'));
-const SkillsRadar = lazy(() => import('./components/SkillsRadar'));
-const Projects = lazy(() => import('./components/Projects'));
-const SpiderFacts = lazy(() => import('./components/SpiderFacts'));
-const SpiderScan = lazy(() => import('./components/SpiderScan'));
-const Certifications = lazy(() => import('./components/Certifications'));
-const Contact = lazy(() => import('./components/Contact'));
-
-
+import AskSpidey from './components/AskSpidey';
 
 function App() {
-  const [blogPosts, setBlogPosts] = useState([]);
-
   useEffect(() => {
-    const handleScroll = () => {
-      document.body.classList.toggle('scrolled', window.scrollY > 30);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  useEffect(() => {
+    // Initialize AOS scroll animations with smooth timing
     AOS.init({
-      duration: 800,
+      duration: 650,
       once: true,
-      offset: 100,
+      offset: 70,
+      easing: 'ease-out-cubic',
     });
   }, []);
 
-  const addBlogPost = (post) => {
-    setBlogPosts([post, ...blogPosts]);
-  };
-  const deleteBlogPost = (index) => {
-    const updated = [...blogPosts];
-    updated.splice(index, 1);
-    setBlogPosts(updated);
-  };
-
-  const updateBlogPost = (index, updatedPost) => {
-    const updated = [...blogPosts];
-    updated[index] = updatedPost;
-    setBlogPosts(updated);
-  };
-
   return (
     <div className="App">
+      {/* Sticky Command Center Navbar */}
       <Navbar />
 
-      <Suspense fallback={<div className="loader">🕸️ Loading...</div>}>
-        <section id="hero" data-aos="fade-up"><Hero /></section>
-        <section id="timeline" data-aos="fade-right"><SpiderTimeline /></section>
-        <section id="skills" data-aos="fade-left"><SkillsRadar /></section>
-        <section id="projects" data-aos="zoom-in"><Projects /></section>
-        <Certifications />
+      <main id="main-content">
+        {/* Cinematic Hero Introduction */}
+        <Hero />
+
+        {/* Origin Story: Behind the Mask */}
+        <div data-aos="fade-up">
+          <About />
+        </div>
+
+        {/* Professional Journey: SlotinSolutions Internship & Degree */}
+        <div data-aos="fade-up">
+          <Experience />
+        </div>
+
+        {/* Technical Capabilities Matrix */}
+        <div data-aos="fade-up">
+          <Skills />
+        </div>
+
+        {/* Featured Products: Jinete, LearnTok (Live), Town Ride, BolYaar */}
+        <div data-aos="fade-up">
+          <Projects />
+        </div>
+
+        {/* Verified Certifications & Leadership */}
+        <div data-aos="fade-up">
+          <Achievements />
+        </div>
+
+        {/* Spider Scan & Direct Resume Access */}
+        <div data-aos="fade-up">
+          <Resume />
+        </div>
+
+        {/* Easter Egg Lore Banner */}
         <SpiderFacts />
-        <SpiderScan />
 
-        <section id="blog" data-aos="fade-up">
-          <BlogEditor onAddPost={addBlogPost} />
-          <SpideyBlog
-            posts={blogPosts}
-            onDelete={deleteBlogPost}
-            onUpdate={updateBlogPost}
-          />
-        </section>
+        {/* Contact Your Friendly Neighborhood Dev */}
+        <div data-aos="fade-up">
+          <Contact />
+        </div>
+      </main>
 
-        <section id="contact" data-aos="fade-up"><Contact /></section>
-      </Suspense>
+      {/* Global Footer */}
+      <Footer />
 
+      {/* Floating Interactive Elements */}
       <BackToTop />
       <AskSpidey />
     </div>

@@ -1,0 +1,170 @@
+/* Resume.css */
+
+.resume-section {
+  background: var(--bg-primary);
+  position: relative;
+}
+
+.resume-main-card {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: 3rem;
+  align-items: center;
+  padding: 3rem;
+  border-color: rgba(230, 36, 41, 0.35);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 25px var(--red-glow-subtle);
+}
+
+.resume-info-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.resume-status-strip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-red);
+  background: rgba(230, 36, 41, 0.08);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--card-border);
+  width: fit-content;
+}
+
+.resume-card-heading {
+  font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.resume-card-desc {
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.resume-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 0.5rem 0;
+}
+
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.92rem;
+  color: var(--text-primary);
+}
+
+.check-bullet {
+  color: var(--accent-green);
+  flex-shrink: 0;
+}
+
+.resume-actions-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+/* Right QR Box */
+.resume-qr-side {
+  display: flex;
+  justify-content: center;
+}
+
+.qr-card-frame {
+  position: relative;
+  background: var(--card-elevated);
+  border: 2px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.15rem;
+  max-width: 300px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: all var(--transition-normal);
+}
+
+.qr-card-frame:hover {
+  border-color: var(--accent-red);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 25px var(--red-glow);
+}
+
+.qr-corner {
+  position: absolute;
+  font-size: 1rem;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.qr-corner.top-left { top: 6px; left: 8px; }
+.qr-corner.top-right { top: 6px; right: 8px; }
+.qr-corner.bottom-left { bottom: 6px; left: 8px; }
+.qr-corner.bottom-right { bottom: 6px; right: 8px; }
+
+.qr-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-red);
+}
+
+.qr-header-icon {
+  color: var(--accent-red);
+}
+
+.qr-canvas-box {
+  background: #ffffff;
+  padding: 0.85rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-caption {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.45;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .resume-main-card {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .resume-info-side {
+    align-items: center;
+  }
+
+  .resume-checklist {
+    text-align: left;
+  }
+
+  .resume-actions-group {
+    justify-content: center;
+  }
+}
+

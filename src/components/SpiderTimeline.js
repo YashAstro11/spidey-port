@@ -5,11 +5,11 @@ const timeline = [
   {
     title: '🎓 B.Tech in Computer Science',
     date: '2022 – 2026',
-    description: 'Shri Ramswaroop Memorial University, Lucknow (CGPA: 8.23)',
+    description: 'Shri Ramswaroop Memorial University, Lucknow (CGPA: 8.27)',
   },
   {
     title: '💼 React Native Developer Intern',
-    date: 'Jun 2025 – Present',
+    date: 'Aug 2025 – Aug 2026 (1 Year)',
     description: 'SlotinSolutions (Remote) — Building live React Native apps with Expo, Firebase, and Redux.',
   },
   {

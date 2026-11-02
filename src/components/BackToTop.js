@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { ArrowUp } from 'lucide-react';
 import './BackToTop.css';
 
 const BackToTop = () => {
@@ -6,10 +7,10 @@ const BackToTop = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setVisible(window.scrollY > 300);
+      setVisible(window.scrollY > 400);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -19,10 +20,14 @@ const BackToTop = () => {
 
   return (
     <button
-      className={`back-to-top ${visible ? 'show' : ''}`}
+      type="button"
+      className={`spidey-back-to-top ${visible ? 'visible' : ''}`}
       onClick={scrollToTop}
+      aria-label="Scroll back to top"
+      title="Back to Top"
     >
-      🕸️ Top
+      <span className="top-web-icon">🕸️</span>
+      <ArrowUp size={16} className="top-arrow-icon" />
     </button>
   );
 };
